@@ -1,0 +1,12 @@
+.btn.disabled, .btn:disabled {
+    cursor: not-allowed;
+}
+
+.btn-light.disabled, .btn-light:disabled {
+    background: inherit;
+}
+
+.todo-list {
+    padding-left:85px;
+    margin-top: 10px;   
+}
