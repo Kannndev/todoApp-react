@@ -11,6 +11,12 @@ class TodoItem extends Component {
         this.inputRef = React.createRef();
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (!prevProps.todo.isEditing && this.props.todo.isEditing) {
+            this.inputRef.current.focus();
+        }
+    }
+
     render() {
         const { todo, onUpdate, onDelete } = this.props;
         return (<div className="todo todo-list">
@@ -27,7 +33,7 @@ class TodoItem extends Component {
                 className="form-control todo-text"
                 placeholder="What needs to be done?"
                 value={todo.text} />
-            <button onClick={() => this.handleEdit()} className="btn btn-light btn-sm" style={{ paddingLeft: 10 }}>
+            <button onClick={() => this.props.onUpdateEditState({ ...this.props.todo, isEditing: true })} className="btn btn-light btn-sm" style={{ paddingLeft: 10 }}>
                 <FontAwesomeIcon icon={['fas', 'edit']} size="2x" />
             </button>
             <button onClick={() => onDelete(todo)} className="btn btn-light btn-sm">
@@ -42,10 +48,6 @@ class TodoItem extends Component {
         }
     }
 
-    handleEdit() {
-        this.props.onUpdateEditState({ ...this.props.todo, isEditing: true });
-        this.inputRef.current.focus();
-    }
 }
 
 export default TodoItem;
