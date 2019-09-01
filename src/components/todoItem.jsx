@@ -33,7 +33,10 @@ class TodoItem extends Component {
                 className="form-control todo-text"
                 placeholder="What needs to be done?"
                 value={todo.text} />
-            <button onClick={() => this.props.onUpdateEditState({ ...this.props.todo, isEditing: true })} className="btn btn-light btn-sm" style={{ paddingLeft: 10 }}>
+            <button onClick={() => this.props.onUpdateEditState({ ...this.props.todo, isEditing: true })}
+                disabled={todo.completionStatus}
+                className="btn btn-light btn-sm"
+                style={{ paddingLeft: 10 }}>
                 <FontAwesomeIcon icon={['fas', 'edit']} size="2x" />
             </button>
             <button onClick={() => onDelete(todo)} className="btn btn-light btn-sm">
