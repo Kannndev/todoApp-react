@@ -10,7 +10,7 @@ import { helper } from './helpers/helper';
 
 class App extends Component {
   render() {
-    const { updateAllToggle, isSelectAll, todoList, updateTodo, updateEditState, deleteTodo } = this.props
+    const { updateAllToggle, isSelectAll, todoList, updateTodo, deleteTodo } = this.props
     return (
       <div className="App">
         <Header />
@@ -29,8 +29,7 @@ class App extends Component {
               <TodoItem key={elem.id}
                 onUpdate={updateTodo}
                 todo={elem}
-                onDelete={deleteTodo}
-                onUpdateEditState={updateEditState}>
+                onDelete={deleteTodo}>
               </TodoItem>
             )
           })}
@@ -66,9 +65,6 @@ const mapDispatchToProps = dispatch => {
     },
     updateTodo: payload => {
       dispatch({ type: actionConstants.UPDATE_TODO, payload });
-    },
-    updateEditState: payload => {
-      dispatch({ type: actionConstants.UPDATE_EDIT_STATE, payload });
     },
     updateAllToggle: payload => {
       dispatch({ type: actionConstants.UPDATE_ALL_TOGGLE, payload });

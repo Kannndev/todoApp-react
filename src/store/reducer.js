@@ -26,15 +26,6 @@ export default (state = initialState, { type, payload }) => {
             newState.todoList = todoList;
             break;
         }
-        case actionConstants.UPDATE_EDIT_STATE: {
-            const todoList = [...newState.todoList];
-            const todoIndex = todoList.findIndex(elem => elem.id === payload.id);
-            const todo = { ...todoList[todoIndex] };
-            todo.isEditing = payload.isEditing;
-            todoList[todoIndex] = todo;
-            newState.todoList = todoList;
-            break;
-        }
         case actionConstants.UPDATE_ALL_TOGGLE: {
             const todoList = [...newState.todoList];
             newState.todoList = todoList.map(elem => { elem.completionStatus = payload; return elem });
