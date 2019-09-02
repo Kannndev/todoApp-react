@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import Header from './components/header';
 import CreateTodo from './components/createTodo';
 import TodoItem from './components/todoItem';
+import Footer from './components/footer';
+
 import './App.css';
 import actionConstants from './store/actionConstants';
 
 class App extends Component {
+
   render() {
+    console.log(this.props);
     const { updateAllToggle, isSelectAll, todoList, updateTodo, deleteTodo, addTodo } = this.props
     return (
       <div className="App">
@@ -16,7 +21,7 @@ class App extends Component {
         <CreateTodo todoList={todoList}
           updateAllToggle={updateAllToggle}
           isSelectAll={isSelectAll}
-          add={addTodo} />
+          addTodo={addTodo} />
         <React.Fragment>
           {todoList.map(elem => {
             return (
@@ -28,12 +33,15 @@ class App extends Component {
             )
           })}
         </React.Fragment>
+        <Footer count={todoList.filter(elem => !elem.completionStatus).length} />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
+  console.log('state', state);
+  console.log('props', props);
   return {
     isSelectAll: state.isSelectAll,
     todoList: state.todoList
@@ -57,4 +65,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

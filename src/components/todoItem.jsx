@@ -23,13 +23,18 @@ class TodoItem extends Component {
             <button disabled={todo.isEditing} className="btn btn-light btn-sm" onClick={() => onUpdate({ ...todo, completionStatus: !todo.completionStatus })}>
                 <FontAwesomeIcon icon={helper.getIconForCompletion(todo.completionStatus)} size="2x" />
             </button>
+            <label hidden={todo.isEditing}
+                style={{ textDecoration: todo.completionStatus ? 'line-through' : 'none' }}
+                className="form-control todo-text">
+                {todo.text}
+            </label>
             <input type="text"
                 ref={this.inputRef}
-                disabled={!todo.isEditing}
+                hidden={!todo.isEditing}
                 onChange={(e) => onUpdate({ ...todo, text: e.target.value })}
                 onKeyUp={(e) => this.handleKeyDown(e)}
                 onBlur={(e) => onUpdate({ ...todo, text: e.target.value, isEditing: false })}
-                style={{ textDecoration: todo.completionStatus ? 'line-through' : 'none' }}
+                style={{ textDecoration: todo.completionStatus ? 'line-through' : 'none', marginBottom: 8 }}
                 className="form-control todo-text"
                 placeholder="What needs to be done?"
                 value={todo.text} />
@@ -47,7 +52,7 @@ class TodoItem extends Component {
 
     handleKeyDown(e) {
         if (e.keyCode === 13) {
-            this.props.onUpdateEditState({ ...this.props.todo, isEditing: false });
+            this.props.onUpdate({ ...this.props.todo, isEditing: false });
         }
     }
 
