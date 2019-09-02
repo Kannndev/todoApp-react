@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { connect } from 'react-redux';
 
 import Header from './components/header';
+import CreateTodo from './components/createTodo';
 import TodoItem from './components/todoItem';
 import './App.css';
 import actionConstants from './store/actionConstants';
-import { helper } from './helpers/helper';
 
 class App extends Component {
   render() {
-    const { updateAllToggle, isSelectAll, todoList, updateTodo, deleteTodo } = this.props
+    const { updateAllToggle, isSelectAll, todoList, updateTodo, deleteTodo, addTodo } = this.props
     return (
       <div className="App">
         <Header />
-        <div className="todo new-todo">
-          <button className="btn btn-light btn-sm"
-            disabled={todoList.length ? false : true}
-            onClick={() => updateAllToggle(!isSelectAll)}>
-            <FontAwesomeIcon icon={helper.getIconForCompletion(isSelectAll)} size="2x" />
-          </button>
-          <input type="text" className="form-control todo-text"
-            placeholder="What needs to be done?" onKeyUp={(e) => this.onKeyUp(e)} />
-        </div>
+        <CreateTodo todoList={todoList}
+          updateAllToggle={updateAllToggle}
+          isSelectAll={isSelectAll}
+          add={addTodo} />
         <React.Fragment>
           {todoList.map(elem => {
             return (
@@ -36,18 +30,6 @@ class App extends Component {
         </React.Fragment>
       </div>
     );
-  }
-
-  onKeyUp(e) {
-    if (e.keyCode === 13) {
-      this.props.addTodo({
-        id: parseInt(Math.random() * 100000),
-        text: e.target.value,
-        isEditing: false,
-        completionStatus: false
-      })
-      e.target.value = '';
-    }
   }
 }
 
