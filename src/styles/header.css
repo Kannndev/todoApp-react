@@ -1,0 +1,18 @@
+.App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 15vmin;
+    pointer-events: none;
+}
+
+@keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+
+.app-header {
+    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
