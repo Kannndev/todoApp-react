@@ -22,7 +22,7 @@ class CreateTodo extends Component {
 
     onKeyUp(e) {
         if (e.keyCode === 13) {
-            this.props.addTodo({
+            this.props.onAdd({
                 id: parseInt(Math.random() * 100000),
                 text: e.target.value,
                 isEditing: false,

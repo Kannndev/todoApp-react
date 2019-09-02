@@ -3,4 +3,5 @@ export default {
     UPDATE_TODO: 'UPDATE_TODO',
     DELETE_TODO: 'DELETE_TODO',
     UPDATE_ALL_TOGGLE: 'UPDATE_TOGGLE',
+    CLEAR: 'CLEAR'
 }

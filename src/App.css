@@ -14,7 +14,7 @@
 }
 
 .todo-text {
-  width: 50vw;
+  width: 30vw;
   text-align: left;
 }
 
@@ -23,4 +23,23 @@
   padding: 0;
   background: inherit;
   margin-right: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .todo-text {
+    width: 55vw;
+    height: auto;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+  .todo-text {
+    width: 60vw;
+  }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1200px) {
+  .todo-text {
+    width: 45vw;
+  }
 }

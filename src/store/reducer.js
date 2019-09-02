@@ -37,6 +37,11 @@ export default (state = initialState, { type, payload }) => {
             newState.todoList = todoList.filter(elem => elem.id !== payload.id);
             break;
         }
+        case actionConstants.CLEAR: {
+            const todoList = [...newState.todoList];
+            newState.todoList = todoList.filter(elem => !elem.completionStatus);
+            break;
+        }
         default: {
             break;
         }

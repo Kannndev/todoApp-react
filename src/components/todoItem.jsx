@@ -24,7 +24,7 @@ class TodoItem extends Component {
                 <FontAwesomeIcon icon={helper.getIconForCompletion(todo.completionStatus)} size="2x" />
             </button>
             <label hidden={todo.isEditing}
-                style={{ textDecoration: todo.completionStatus ? 'line-through' : 'none' }}
+                style={{ textDecoration: todo.completionStatus ? 'line-through' : 'none', height: 'auto' }}
                 className="form-control todo-text">
                 {todo.text}
             </label>

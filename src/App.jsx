@@ -6,6 +6,7 @@ import Header from './components/header';
 import CreateTodo from './components/createTodo';
 import TodoItem from './components/todoItem';
 import Footer from './components/footer';
+import { helper } from './helpers/helper';
 
 import './App.css';
 import actionConstants from './store/actionConstants';
@@ -13,15 +14,14 @@ import actionConstants from './store/actionConstants';
 class App extends Component {
 
   render() {
-    console.log(this.props);
-    const { updateAllToggle, isSelectAll, todoList, updateTodo, deleteTodo, addTodo } = this.props
+    const { updateAllToggle, isSelectAll, todoList, updateTodo, deleteTodo, addTodo, clearTodo, allTodos } = this.props
     return (
       <div className="App">
         <Header />
         <CreateTodo todoList={todoList}
           updateAllToggle={updateAllToggle}
           isSelectAll={isSelectAll}
-          addTodo={addTodo} />
+          onAdd={addTodo} />
         <React.Fragment>
           {todoList.map(elem => {
             return (
@@ -33,18 +33,19 @@ class App extends Component {
             )
           })}
         </React.Fragment>
-        <Footer count={todoList.filter(elem => !elem.completionStatus).length} />
+        <Footer count={allTodos.filter(elem => !elem.completionStatus).length}
+          onClear={clearTodo}
+          completedCount={todoList.filter(elem => elem.completionStatus).length} />
       </div>
     );
   }
 }
 
-const mapStateToProps = (state, props) => {
-  console.log('state', state);
-  console.log('props', props);
+const mapStateToProps = (state, { match }) => {
   return {
     isSelectAll: state.isSelectAll,
-    todoList: state.todoList
+    todoList: helper.filterTodos(state.todoList, match.params.status),
+    allTodos: state.todoList
   };
 }
 
@@ -62,6 +63,9 @@ const mapDispatchToProps = dispatch => {
     deleteTodo: payload => {
       dispatch({ type: actionConstants.DELETE_TODO, payload });
     },
+    clearTodo: () => {
+      dispatch({ type: actionConstants.CLEAR });
+    }
   }
 }
 
