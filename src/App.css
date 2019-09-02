@@ -28,6 +28,11 @@ body {
   margin-right: 10px;
 }
 
+.icon-btn :active :focus :hover {
+  box-shadow: 0;
+  background-color: 'none';
+}
+
 @media only screen and (max-width: 600px) {
   .todo-text {
     width: 55vw;

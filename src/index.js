@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import "bootstrap/dist/css/bootstrap.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCheckCircle, faCircle, faTimesCircle, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { createStore } from "redux";
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
@@ -14,7 +15,7 @@ import reducer from "./store/reducer";
 
 // Initializing 3rd party libs
 const store = createStore(reducer);
-library.add(faCircle, faCheckCircle, faTimesCircle, faEdit, faTrashAlt);
+library.add(faCircle, faCheckCircle, faTimesCircle, faEdit, faTrashAlt, faTwitter, faLinkedinIn);
 
 ReactDOM.render(
     <Provider store={store}>

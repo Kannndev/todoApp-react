@@ -6,6 +6,7 @@ import Header from './components/header';
 import CreateTodo from './components/createTodo';
 import TodoItem from './components/todoItem';
 import Footer from './components/footer';
+import SocialMedia from './components/socialMedia';
 import { helper } from './helpers/helper';
 
 import './App.css';
@@ -22,20 +23,25 @@ class App extends Component {
           updateAllToggle={updateAllToggle}
           isSelectAll={isSelectAll}
           onAdd={addTodo} />
-        <React.Fragment>
-          {todoList.map(elem => {
-            return (
-              <TodoItem key={elem.id}
-                onUpdate={updateTodo}
-                todo={elem}
-                onDelete={deleteTodo}>
-              </TodoItem>
-            )
-          })}
-        </React.Fragment>
-        <Footer count={allTodos.filter(elem => !elem.completionStatus).length}
-          onClear={clearTodo}
-          completedCount={todoList.filter(elem => elem.completionStatus).length} />
+        {allTodos.length ?
+          <React.Fragment>
+            <React.Fragment>
+              {todoList.map(elem => {
+                return (
+                  <TodoItem key={elem.id}
+                    onUpdate={updateTodo}
+                    todo={elem}
+                    onDelete={deleteTodo}>
+                  </TodoItem>
+                )
+              })}
+            </React.Fragment>
+            <Footer count={allTodos.filter(elem => !elem.completionStatus).length}
+              onClear={clearTodo}
+              completedCount={todoList.filter(elem => elem.completionStatus).length} />
+          </React.Fragment> : <div />
+        }
+        <SocialMedia />
       </div>
     );
   }

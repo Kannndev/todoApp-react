@@ -2,7 +2,6 @@ import actionConstants from './actionConstants';
 
 const initialState = {
     todoList: [
-        { id: 1, text: 'This is my first todo', completionStatus: false, isEditing: false }
     ],
     isSelectAll: false
 }
