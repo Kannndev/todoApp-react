@@ -9,7 +9,7 @@ class CreateTodo extends Component {
         const { updateAllToggle, isSelectAll, todoList } = this.props;
         return (
             <div className="todo new-todo">
-                <button className="btn btn-light btn-sm"
+                <button className="btn btn-light btn-sm icon-btn"
                     disabled={todoList.length ? false : true}
                     onClick={() => updateAllToggle(!isSelectAll)}>
                     <FontAwesomeIcon icon={helper.getIconForCompletion(isSelectAll)} size="2x" />

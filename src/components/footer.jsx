@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import './footer.css';
+import '../styles/footer.css';
 import { helper } from './../helpers/helper';
 
 class Footer extends Component {
@@ -15,12 +15,12 @@ class Footer extends Component {
                     </span>
                 </div>
                 <div className="col-7" style={{ padding: 0 }}>
-                    <NavLink to="/all" exact activeStyle={{ color: "red" }} className="btn">All</NavLink>
-                    <NavLink to="/active" exact activeStyle={{ color: "red" }} className="btn">Active</NavLink>
-                    <NavLink to="/completed" exact activeStyle={{ color: "red" }} className="btn">Completed</NavLink>
+                    <NavLink to="/all" exact activeStyle={{ color: "red" }} className="btn icon-btn">All</NavLink>
+                    <NavLink to="/active" exact activeStyle={{ color: "red" }} className="btn icon-btn">Active</NavLink>
+                    <NavLink to="/completed" exact activeStyle={{ color: "red" }} className="btn icon-btn">Completed</NavLink>
                 </div>
                 <div className="col-2" style={{ textAlign: 'right', padding: 0 }}>
-                    <button disabled={!completedCount} className="btn" onClick={() => onClear()}>Clear</button>
+                    <button disabled={!completedCount} className="btn icon-btn" onClick={() => onClear()}>Clear</button>
                 </div>
             </div>
         </div>);

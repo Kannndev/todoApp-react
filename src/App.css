@@ -1,7 +1,10 @@
 .App {
   text-align: center;
-  background: #ECECEC;
   height: 100vh;
+}
+
+body {
+  background: #ECECEC;
 }
 
 .App-link {
@@ -18,7 +21,7 @@
   text-align: left;
 }
 
-.btn {
+.icon-btn {
   border:0;
   padding: 0;
   background: inherit;

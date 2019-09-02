@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { helper } from '../helpers/helper';
-import './todoItem.css'
+import './../styles/todoItem.css'
+import DeleteModal from './deleteModal';
 
 class TodoItem extends Component {
+
+    state = {
+        isDeleteModalOpen: false
+    }
 
     constructor(props) {
         super(props);
@@ -18,9 +23,9 @@ class TodoItem extends Component {
     }
 
     render() {
-        const { todo, onUpdate, onDelete } = this.props;
+        const { todo, onUpdate } = this.props;
         return (<div className="todo todo-list">
-            <button disabled={todo.isEditing} className="btn btn-light btn-sm" onClick={() => onUpdate({ ...todo, completionStatus: !todo.completionStatus })}>
+            <button disabled={todo.isEditing} className="btn btn-light btn-sm icon-btn" onClick={() => onUpdate({ ...todo, completionStatus: !todo.completionStatus })}>
                 <FontAwesomeIcon icon={helper.getIconForCompletion(todo.completionStatus)} size="2x" />
             </button>
             <label hidden={todo.isEditing}
@@ -40,19 +45,27 @@ class TodoItem extends Component {
                 value={todo.text} />
             <button onClick={() => this.props.onUpdate({ ...this.props.todo, isEditing: true })}
                 disabled={todo.completionStatus}
-                className="btn btn-light btn-sm"
+                className="btn btn-light btn-sm icon-btn"
                 style={{ paddingLeft: 10 }}>
                 <FontAwesomeIcon icon={['fas', 'edit']} size="2x" />
             </button>
-            <button onClick={() => onDelete(todo)} className="btn btn-light btn-sm">
+            <button onClick={() => this.setState({ isDeleteModalOpen: true })} className="btn btn-light btn-sm icon-btn">
                 <FontAwesomeIcon icon={['fas', 'trash-alt']} size="2x" />
             </button>
+            <DeleteModal isDeleteModalOpen={this.state.isDeleteModalOpen} handleDelete={this.handleDelete.bind(this)}></DeleteModal>
         </div>);
     }
 
     handleKeyDown(e) {
         if (e.keyCode === 13) {
             this.props.onUpdate({ ...this.props.todo, isEditing: false });
+        }
+    }
+
+    handleDelete(confimation) {
+        this.setState({ isDeleteModalOpen: false });
+        if (confimation) {
+            this.props.onDelete(this.props.todo);
         }
     }
 
