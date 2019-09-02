@@ -10,3 +10,10 @@
     padding-left:85px;
     margin-top: 10px;   
 }
+
+
+@media only screen and (max-width: 450px) {
+    .todo-list {
+        padding-left: 7px;
+    }
+}

@@ -26,7 +26,7 @@ class TodoItem extends Component {
         const { todo, onUpdate } = this.props;
         return (<div className="todo todo-list">
             <button disabled={todo.isEditing} className="btn btn-light btn-sm icon-btn" onClick={() => onUpdate({ ...todo, completionStatus: !todo.completionStatus })}>
-                <FontAwesomeIcon icon={helper.getIconForCompletion(todo.completionStatus)} size="2x" />
+                <FontAwesomeIcon icon={helper.getIconForCompletion(todo.completionStatus)} size={helper.getIconSizeBasedOnScreenSize()} />
             </button>
             <label hidden={todo.isEditing}
                 style={{ textDecoration: todo.completionStatus ? 'line-through' : 'none', height: 'auto' }}
@@ -47,10 +47,10 @@ class TodoItem extends Component {
                 disabled={todo.completionStatus}
                 className="btn btn-light btn-sm icon-btn"
                 style={{ paddingLeft: 10 }}>
-                <FontAwesomeIcon icon={['fas', 'edit']} size="2x" />
+                <FontAwesomeIcon icon={['fas', 'edit']} size={helper.getIconSizeBasedOnScreenSize()} />
             </button>
             <button onClick={() => this.setState({ isDeleteModalOpen: true })} className="btn btn-light btn-sm icon-btn">
-                <FontAwesomeIcon icon={['fas', 'trash-alt']} size="2x" />
+                <FontAwesomeIcon icon={['fas', 'trash-alt']} size={helper.getIconSizeBasedOnScreenSize()} />
             </button>
             <DeleteModal isDeleteModalOpen={this.state.isDeleteModalOpen} handleDelete={this.handleDelete.bind(this)}></DeleteModal>
         </div>);

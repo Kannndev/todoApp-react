@@ -33,7 +33,7 @@ body {
   background-color: 'none';
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) and (min-width: 400px) {
   .todo-text {
     width: 55vw;
     height: auto;
@@ -49,5 +49,12 @@ body {
 @media only screen and (min-width: 800px) and (max-width: 1200px) {
   .todo-text {
     width: 45vw;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .todo-text {
+    width: 90vw;
+    height: auto;
   }
 }

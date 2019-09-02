@@ -25,8 +25,13 @@ function getPunctuation(count) {
     return count > 1 ? 'items' : 'item';
 }
 
+function getIconSizeBasedOnScreenSize() {
+    return window.innerWidth < 450 ? '1x' : '2x'
+}
+
 export const helper = {
     getIconForCompletion,
     filterTodos,
-    getPunctuation
+    getPunctuation,
+    getIconSizeBasedOnScreenSize
 }

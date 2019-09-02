@@ -10,7 +10,7 @@ class Footer extends Component {
         return (<div className="todo footer-container">
             <div className="form-control todo-text footer">
                 <div className="col-3" style={{ textAlign: 'left', padding: 0 }}>
-                    <span>
+                    <span className="count-txt">
                         {count} {helper.getPunctuation(count)} left
                     </span>
                 </div>

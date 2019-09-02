@@ -12,7 +12,7 @@ class CreateTodo extends Component {
                 <button className="btn btn-light btn-sm icon-btn"
                     disabled={todoList.length ? false : true}
                     onClick={() => updateAllToggle(!isSelectAll)}>
-                    <FontAwesomeIcon icon={helper.getIconForCompletion(isSelectAll)} size="2x" />
+                    <FontAwesomeIcon icon={helper.getIconForCompletion(isSelectAll)} size={helper.getIconSizeBasedOnScreenSize()} />
                 </button>
                 <input type="text" className="form-control todo-text"
                     placeholder="What needs to be done?" onKeyUp={(e) => this.onKeyUp(e)} />

@@ -5,3 +5,12 @@
 .footer-container {
     padding-left: 35px;
 }
+
+@media only screen and (max-width: 450px) {
+    .footer-container {
+        padding-left: 25px;
+    }
+    .count-txt {
+        font-size: 13px;
+    }
+}
